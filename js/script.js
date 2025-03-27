@@ -11,6 +11,13 @@ for (let i = 0; i < 5; i++) {
     number.appendChild(li);
 }
 
+// somma i numeri generati
+let somma = 0;
+document.querySelectorAll('ul li').forEach(li => {
+    somma += parseInt(li.textContent);
+});
+console.log(somma);
+
 // rendi visibile le cartelle dopo 10 sec e  nascondi  i numeri
 setTimeout(() => {
     element.classList.remove('d-none');
@@ -50,22 +57,25 @@ confirmButton.addEventListener('click', (event) => {
 });
 
 // restituamo il risultato doppo aver calcolato la veridicità dei numeri inseriti
+
 function calculateResult() {
+    let sum = 0;
     // seleziona tutti gli input
     const inputsTot = document.querySelectorAll('input');
-    let sum = 0;
-
     // somma tutti i numeri inseriti
     inputsTot.forEach(input => {
         sum += parseInt(input.value);
     });
+    if (sum === somma) {
+        instructions.innerText = 'hai vinto!';
+    } else {
+        instructions.innerText = 'hai perso!';
+    }
 }
 
-if (calculateResult() === somma){
-    instructions.innerText = 'hai vinto!';
-} else {
-    instructions.innerText = 'hai perso!';
-}
+
+
+
 
 
 
