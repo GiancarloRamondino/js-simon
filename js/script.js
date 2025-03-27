@@ -10,6 +10,21 @@ for (let i = 0; i < 5; i++) {
     number.appendChild(li);
 }
 
+// aggiungi un conto alla rovescia di 10 secondi
+let countdown = 10;
+const countdownElement = document.createElement('h2');
+instructions.appendChild(countdownElement);
+
+const countdownInterval = setInterval(() => {
+    countdownElement.textContent = `${countdown} secondi`;
+    countdown--;
+    countdownElement.classList.add ('text-center');
+    if (countdown < 0) {
+        clearInterval(countdownInterval);
+        countdownElement.textContent = '';
+    }
+}, 1000);
+
 // somma i numeri generati
 let somma = 0;
 document.querySelectorAll('ul li').forEach(li => {
@@ -24,7 +39,7 @@ setTimeout(() => {
     instructions.textContent = '';
     instructions.innerText = 'Inserisci tutti i numeri!';
     console.log('Form è ora visibile');
-}, 10000);
+}, 11000);
 
 // aggiungiamo una funzione per assicurarci che non ci siano campi vuoti
 function validateForm() {
@@ -70,13 +85,41 @@ function calculateResult() {
         element.classList.add ('d-none');
         setTimeout(() => {
             location.reload();
-        }, 5000);
+        }, 6000);
+        // aggiungi un conto alla rovescia di 5 secondi
+        let countdownWin = 5;
+        const countdownElement = document.createElement('h2');
+        instructions.appendChild(countdownElement);
+        
+        const countdownInterval = setInterval(() => {
+            countdownElement.textContent = `Riprovaci tra ${countdownWin} secondi`;
+            countdownWin--;
+            countdownElement.classList.add ('text-center');
+            if (countdownWin < 0) {
+                clearInterval(countdownInterval);
+                countdownElement.textContent = '';
+            }
+        }, 1000);
     } else {
         instructions.innerText = 'hai perso!';
         element.classList.add ('d-none');
         setTimeout(() => {
             location.reload();
-        }, 5000);
+        }, 6000);
+        // aggiungi un conto alla rovescia di 5 secondi
+        let countdownLose = 5;
+        const countdownElement1 = document.createElement('h2');
+        instructions.appendChild(countdownElement1);
+        
+        const countdownInterval1 = setInterval(() => {
+            countdownElement1.textContent = `Riprovaci tra ${countdownLose} secondi`;
+            countdownLose--;
+            countdownElement1.classList.add ('text-center');
+            if (countdownLose < 0) {
+                clearInterval(countdownInterval1);
+                countdownElement1.textContent = '';
+            }
+        }, 1000);
     }
 }
 
