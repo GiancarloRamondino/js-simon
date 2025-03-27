@@ -3,7 +3,6 @@ const element = document.querySelector('form');
 const number = document.querySelector('ul');
 const instructions = document.getElementById('instructions');
 
-
 // crea numeri randomici da 1 a 100 e inseriscili nella lista come li in ul
 for (let i = 0; i < 5; i++) {
     const li = document.createElement('li');
@@ -68,8 +67,16 @@ function calculateResult() {
     });
     if (sum === somma) {
         instructions.innerText = 'hai vinto!';
+        element.classList.add ('d-none');
+        setTimeout(() => {
+            location.reload();
+        }, 5000);
     } else {
         instructions.innerText = 'hai perso!';
+        element.classList.add ('d-none');
+        setTimeout(() => {
+            location.reload();
+        }, 5000);
     }
 }
 
