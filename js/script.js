@@ -3,13 +3,13 @@ const element = document.querySelector('form');
 const number = document.querySelector('ul');
 const instructions = document.getElementById('instructions');
 
+
 // crea numeri randomici da 1 a 100 e inseriscili nella lista come li in ul
 for (let i = 0; i < 5; i++) {
     const li = document.createElement('li');
-    li.textContent = Math.floor(Math.random() * 100) + 1;
+    li.textContent = Math.floor(Math.random() * 50) + 1;
     number.appendChild(li);
 }
-
 
 // rendi visibile le cartelle dopo 10 sec e  nascondi  i numeri
 setTimeout(() => {
@@ -35,11 +35,41 @@ function validateForm() {
 
     // se i campi sono vuoti, mostra un messaggio di errore
     if (!isValid) {
-        alert('perfavore riempi ogni campo');
+        alert('Hey hai dimenticato un numero!');
     }
-
     return isValid;
 }
+
+// aggiungi un event listener al pulsante di conferma
+const confirmButton = document.querySelector('button');
+confirmButton.addEventListener('click', (event) => {
+    event.preventDefault(); // previene il comportamento predefinito del form
+    if (validateForm()) {
+        calculateResult();
+    }
+});
+
+// restituamo il risultato doppo aver calcolato la veridicità dei numeri inseriti
+function calculateResult() {
+    // seleziona tutti gli input
+    const inputsTot = document.querySelectorAll('input');
+    let sum = 0;
+
+    // somma tutti i numeri inseriti
+    inputsTot.forEach(input => {
+        sum += parseInt(input.value);
+    });
+}
+
+if (calculateResult() === somma){
+    instructions.innerText = 'hai vinto!';
+} else {
+    instructions.innerText = 'hai perso!';
+}
+
+
+
+
 
 
 
